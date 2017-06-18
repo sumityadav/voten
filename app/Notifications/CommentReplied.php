@@ -45,17 +45,17 @@ class CommentReplied extends Notification implements ShouldBroadcast
     /**
      * Get the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
      *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->title($this->comment->owner->username . ' replied to your comment on "' . $this->submission->title . '":')
-            ->subject('Your comment on"' . $this->submission->title . '" just got a new reply.')
-            ->line('"' . $this->comment->body . '"')
-            ->action('Reply', 'https://voten.co/' . $this->submission->slug)
+            ->title($this->comment->owner->username.' replied to your comment on "'.$this->submission->title.'":')
+            ->subject('Your comment on"'.$this->submission->title.'" just got a new reply.')
+            ->line('"'.$this->comment->body.'"')
+            ->action('Reply', 'https://voten.co/'.$this->submission->slug)
             ->line('Thank you for being a part of our alpha program!');
     }
 

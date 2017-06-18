@@ -69,10 +69,10 @@ class Category extends Model
     {
         return DB::table('roles')->where([
             'category_id' => $this->id,
-            'role'        => 'administrator'
+            'role'        => 'administrator',
         ])->orWhere([
             'category_id' => $this->id,
-            'role'        => 'moderator'
+            'role'        => 'moderator',
         ])->pluck('user_id');
     }
 
@@ -84,14 +84,14 @@ class Category extends Model
 
     /**
      * To save on queries we set a 'subscribers' field on category models.
-     * This updates it (in case we lose the actual number for any reason in the future.)
+     * This updates it (in case we lose the actual number for any reason in the future.).
      *
      * @return void
      */
     public function updateSubscribers()
     {
         $this->update([
-            "subscribers" => $this->subscriptions()->count()
+            'subscribers' => $this->subscriptions()->count(),
         ]);
     }
 

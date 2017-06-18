@@ -55,7 +55,7 @@ class BlockDomainController extends Controller
     public function index(Request $request)
     {
         $this->validate($request, [
-            'category' => 'required|max:25'
+            'category' => 'required|max:25',
         ]);
 
         return BlockedDomain::where('category', $request->category)
@@ -86,6 +86,6 @@ class BlockDomainController extends Controller
             ->where('category', $blockEverywhere ? 'all' : $request->category)
             ->delete();
 
-        return $blockEverywhere ? back() : response('Unblocked in ' . $request->category, 200);
+        return $blockEverywhere ? back() : response('Unblocked in '.$request->category, 200);
     }
 }

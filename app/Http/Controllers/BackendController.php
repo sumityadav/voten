@@ -25,7 +25,7 @@ class BackendController extends Controller
     }
 
     /**
-     * shows the forbidden names and usernames page
+     * shows the forbidden names and usernames page.
      *
      * @return view
      */
@@ -43,7 +43,7 @@ class BackendController extends Controller
     }
 
     /**
-     * shows the dashboard which currently displays site's statistics
+     * shows the dashboard which currently displays site's statistics.
      *
      * @return view
      */

@@ -107,7 +107,7 @@ class AdminController extends Controller
 
         if ($request->type == 'solved') {
             return Report::onlyTrashed()->where([
-                'reportable_type' => 'App\Submission'
+                'reportable_type' => 'App\Submission',
             ])->with('reporter', 'submission')->orderBy('created_at', 'desc')->simplePaginate(50);
         }
 

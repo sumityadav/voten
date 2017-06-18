@@ -121,12 +121,12 @@ class CommentVotesController extends Controller
                 $new_downvotes = ($comment->downvotes - 1);
                 $user->commentDownvotes()->detach($request->comment_id);
                 $user->commentUpvotes()->attach($request->comment_id, [
-                    'ip_address' => getRequestIpAddress()
+                    'ip_address' => getRequestIpAddress(),
                 ]);
             } else {
                 $new_upvotes = ($comment->upvotes + 1);
                 $user->commentUpvotes()->attach($request->comment_id, [
-                    'ip_address' => getRequestIpAddress()
+                    'ip_address' => getRequestIpAddress(),
                 ]);
             }
 
@@ -183,12 +183,12 @@ class CommentVotesController extends Controller
                 $new_upvotes = ($comment->upvotes - 1);
                 $user->commentUpvotes()->detach($request->comment_id);
                 $user->commentDownvotes()->attach($request->comment_id, [
-                    'ip_address' => getRequestIpAddress()
+                    'ip_address' => getRequestIpAddress(),
                 ]);
             } else {
                 $new_downvotes = ($comment->downvotes + 1);
                 $user->commentDownvotes()->attach($request->comment_id, [
-                    'ip_address' => getRequestIpAddress()
+                    'ip_address' => getRequestIpAddress(),
                 ]);
             }
 

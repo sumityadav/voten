@@ -55,10 +55,10 @@ class SubmissionReplied extends Notification implements ShouldBroadcast
     public function toMail($notifiable)
     {
         return (new MailMessage())
-            ->title($this->comment->user->username . ' replied:')
-            ->subject('Your submission "' . $this->submission->title . '" just got a new comment.')
-            ->line('"' . $this->comment->body . '"')
-            ->action('Reply', 'https://voten.co/' . $this->submission->slug)
+            ->title($this->comment->user->username.' replied:')
+            ->subject('Your submission "'.$this->submission->title.'" just got a new comment.')
+            ->line('"'.$this->comment->body.'"')
+            ->action('Reply', 'https://voten.co/'.$this->submission->slug)
             ->line('Thank you for being a part of our alpha program!');
     }
 

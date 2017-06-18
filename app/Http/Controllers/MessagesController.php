@@ -66,8 +66,8 @@ class MessagesController extends Controller
     /**
      * is the auth user in the contact's blockedUsers list.
      *
-     * @param integer $contact_id
-     * @param integer $auth_user_id
+     * @param int $contact_id
+     * @param int $auth_user_id
      *
      * @return bool
      */
@@ -91,7 +91,7 @@ class MessagesController extends Controller
     {
         $this->validate($request, [
             'contact_id' => 'required|integer',
-            'page'       => 'required|integer'
+            'page'       => 'required|integer',
         ]);
 
         $messages = Auth::user()->conversations()

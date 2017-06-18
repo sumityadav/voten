@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Activity;
 use App\Traits\CachableUser;
 use Carbon\Carbon;
 use DB;
@@ -39,7 +38,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token', 'deleted_at', 'email', 'settings', 'verified', 'active'
+        'password', 'remember_token', 'deleted_at', 'email', 'settings', 'verified', 'active',
     ];
 
     /**
@@ -277,7 +276,7 @@ class User extends Authenticatable
     }
 
     /**
-     * user's country: either determinded by his registered IP or (in case it wasn't saved at the time) by his last activity's IP
+     * user's country: either determinded by his registered IP or (in case it wasn't saved at the time) by his last activity's IP.
      *
      * @return string
      */
@@ -285,10 +284,10 @@ class User extends Authenticatable
     {
         return Activity::where([
             'user_id' => $this->id,
-            'name'    => 'created_user'
+            'name'    => 'created_user',
         ])->first()->country ?? Activity::where([
-            'user_id' => $this->id
-        ])->orderBy('created_at', 'desc')->first()->country ?? "unknown";
+            'user_id' => $this->id,
+        ])->orderBy('created_at', 'desc')->first()->country ?? 'unknown';
     }
 
     /**
@@ -302,7 +301,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Is the auth user shadow banned
+     * Is the auth user shadow banned.
      *
      * @return bool
      */
