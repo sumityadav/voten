@@ -219,9 +219,9 @@ class User extends Authenticatable
     public function bookmarkedSubmissions()
     {
         return $this->belongsToMany(Submission::class, 'bookmarks', 'user_id', 'bookmarkable_id')
-                        ->where('bookmarkable_type', 'App\Submission')
-                        ->withTimestamps()
-                        ->orderBy('bookmarks.created_at', 'desc');
+                    ->where('bookmarkable_type', 'App\Submission')
+                    ->withTimestamps()
+                    ->orderBy('bookmarks.created_at', 'desc');
     }
 
     public function bookmarkedComments()
@@ -283,12 +283,12 @@ class User extends Authenticatable
      */
     public function country()
     {
-    	return Activity::where([
-    		'user_id' => $this->id,
-    		'name' => 'created_user'
-		])->first()->country ?? Activity::where([
-    		'user_id' => $this->id
-		])->orderBy('created_at', 'desc')->first()->country ?? "unknown";
+        return Activity::where([
+            'user_id' => $this->id,
+            'name'    => 'created_user'
+        ])->first()->country ?? Activity::where([
+            'user_id' => $this->id
+        ])->orderBy('created_at', 'desc')->first()->country ?? "unknown";
     }
 
     /**
@@ -308,6 +308,6 @@ class User extends Authenticatable
      */
     public function isShadowBanned()
     {
-    	return ! $this->active;
+        return !$this->active;
     }
 }

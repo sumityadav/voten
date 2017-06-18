@@ -26,7 +26,7 @@ class AdminController extends Controller
      */
     public function isAdministrator()
     {
-    	return $this->mustBeVotenAdministrator() ? 'true' : 'false';
+        return $this->mustBeVotenAdministrator() ? 'true' : 'false';
     }
 
     /**
@@ -107,7 +107,7 @@ class AdminController extends Controller
 
         if ($request->type == 'solved') {
             return Report::onlyTrashed()->where([
-                'reportable_type' => 'App\Submission',
+                'reportable_type' => 'App\Submission'
             ])->with('reporter', 'submission')->orderBy('created_at', 'desc')->simplePaginate(50);
         }
 

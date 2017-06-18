@@ -13,8 +13,8 @@ class Comment extends Model
     protected static $recordEvents = ['created'];
 
     // protected $events = [
-    // 	"created" => CommentWasCreated::class,
-    // 	"deleted" => CommentWasDeleted::class
+    //     "created" => CommentWasCreated::class,
+    //     "deleted" => CommentWasDeleted::class
     // ];
 
     /**

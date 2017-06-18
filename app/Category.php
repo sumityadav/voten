@@ -15,7 +15,7 @@ class Category extends Model
     protected static $recordEvents = ['created'];
 
     // protected $events = [
-    // 	"updated" => CategoryWasUpdated::class
+    //     "updated" => CategoryWasUpdated::class
     // ];
 
     /**
@@ -59,9 +59,9 @@ class Category extends Model
     public function bannedUsers()
     {
         return DB::table('bans')->where('category', $this->name)
-                    ->where('unban_at', '>=', Carbon::now())
-                    ->orderBy('created_at', 'desc')
-                    ->get()->pluck('user_id');
+                                ->where('unban_at', '>=', Carbon::now())
+                                ->orderBy('created_at', 'desc')
+                                ->get()->pluck('user_id');
     }
 
     // IDs only
@@ -69,10 +69,10 @@ class Category extends Model
     {
         return DB::table('roles')->where([
             'category_id' => $this->id,
-            'role'        => 'administrator',
+            'role'        => 'administrator'
         ])->orWhere([
             'category_id' => $this->id,
-            'role'        => 'moderator',
+            'role'        => 'moderator'
         ])->pluck('user_id');
     }
 
@@ -90,9 +90,9 @@ class Category extends Model
      */
     public function updateSubscribers()
     {
-    	$this->update([
-    		"subscribers" => $this->subscriptions()->count()
-		]);
+        $this->update([
+            "subscribers" => $this->subscriptions()->count()
+        ]);
     }
 
     /**

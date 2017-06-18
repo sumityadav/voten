@@ -131,8 +131,8 @@ class SubmissionVotesController extends Controller
             }
 
             $this->updateUserUpVotesRecords(
-            $user->id, $submission->owner->id, $request->previous_vote, $request->submission_id
-        );
+                $user->id, $submission->owner->id, $request->previous_vote, $request->submission_id
+            );
         } catch (\Exception $e) {
             return response('invalid request', 500);
         }
@@ -236,8 +236,8 @@ class SubmissionVotesController extends Controller
      */
     public function isCheating($user_id, $submission_id, $type = 'upvote')
     {
-    	if (Auth::user()->isShadowBanned()) {
-        	return true;
+        if (Auth::user()->isShadowBanned()) {
+            return true;
         }
 
         if ($type === 'upvote') {

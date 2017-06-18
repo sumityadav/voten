@@ -31,8 +31,8 @@ class BlockDomainController extends Controller
         ]);
 
         if (!($blockEverywhere = !$request->ajax() && $this->mustBeVotenAdministrator())) {
-        	$category = Category::where('name', $request->category)->firstOrFail();
-        	abort_unless($this->mustBeModerator($category->id), 403);
+            $category = Category::where('name', $request->category)->firstOrFail();
+            abort_unless($this->mustBeModerator($category->id), 403);
         }
 
         $blockedDomain = new BlockedDomain([
@@ -55,12 +55,12 @@ class BlockDomainController extends Controller
     public function index(Request $request)
     {
         $this->validate($request, [
-            'category' => 'required|max:25',
+            'category' => 'required|max:25'
         ]);
 
         return BlockedDomain::where('category', $request->category)
-                    ->orderBy('created_at', 'desc')
-                    ->get();
+            ->orderBy('created_at', 'desc')
+            ->get();
     }
 
     /**
@@ -78,14 +78,14 @@ class BlockDomainController extends Controller
         ]);
 
         if (!($blockEverywhere = !$request->ajax() && $this->mustBeVotenAdministrator())) {
-        	$category = Category::where('name', $request->category)->firstOrFail();
-        	abort_unless($this->mustBeModerator($category->id), 403);
+            $category = Category::where('name', $request->category)->firstOrFail();
+            abort_unless($this->mustBeModerator($category->id), 403);
         }
 
         BlockedDomain::where('domain', $request->domain)
-                    ->where('category', $blockEverywhere ? 'all' : $request->category)
-                    ->delete();
+            ->where('category', $blockEverywhere ? 'all' : $request->category)
+            ->delete();
 
-        return $blockEverywhere ? back() : response('Unblocked in '.$request->category, 200);
+        return $blockEverywhere ? back() : response('Unblocked in ' . $request->category, 200);
     }
 }

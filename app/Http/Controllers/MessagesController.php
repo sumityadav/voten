@@ -73,9 +73,9 @@ class MessagesController extends Controller
      */
     protected function isAuthUserBlockedToContact($contact_id, $auth_user_id)
     {
-    	if (Auth::user()->isShadowBanned()) {
-    		return true;
-    	}
+        if (Auth::user()->isShadowBanned()) {
+            return true;
+        }
 
         $list = collect($this->blockedUsers($contact_id));
 
@@ -91,12 +91,12 @@ class MessagesController extends Controller
     {
         $this->validate($request, [
             'contact_id' => 'required|integer',
-            'page'       => 'required|integer',
+            'page'       => 'required|integer'
         ]);
 
         $messages = Auth::user()->conversations()
-                ->where('contact_id', $request->contact_id)
-                ->simplePaginate(40);
+                                ->where('contact_id', $request->contact_id)
+                                ->simplePaginate(40);
 
         $unreads = $messages->filter(function ($value, $key) {
             return $value->read_at == null;
