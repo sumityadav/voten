@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Ban;
 use App\Category;
 use App\User;
-use DB;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 
 class BanController extends Controller

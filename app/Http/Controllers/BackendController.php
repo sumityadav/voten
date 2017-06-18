@@ -3,17 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\AppointeddUser;
-use App\CategoryForbiddenName;
-use App\User;
-use App\Submission;
-use App\Comment;
 use App\Category;
+use App\CategoryForbiddenName;
+use App\Comment;
 use App\Message;
 use App\Report;
+use App\Submission;
+use App\User;
 use App\UserForbiddenName;
 use Auth;
-use DB;
 use Carbon\Carbon;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 

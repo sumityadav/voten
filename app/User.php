@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\Traits\CachableUser;
 use App\Activity;
+use App\Traits\CachableUser;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Database\Eloquent\SoftDeletes;
